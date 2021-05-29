@@ -74,3 +74,4 @@ requests==2.25.1
 urllib3==1.26.5
 yolo34py==0.2
 ```
+Tested on `Archlinux 5.12.7-arch1-1`, python version `Python 3.9.5`
