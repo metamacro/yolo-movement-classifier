@@ -58,6 +58,10 @@ $ wget -O cfg/yolov3-tiny.cfg https://raw.githubusercontent.com/pjreddie/darknet
 ```
 Change `Detector(...)` parameters in `test_yolo34.py` to `yolov3-tiny.cfg` and `yolov3-tiny.weights`
 
+## Scripts
+- test\_yolo34py.py - used for testing the yolo34py module, with the yolov3 and yolov3-tiny models
+- extract_frames.py - used for video frames extraction 
+
 ## Datasets
 The test image `assets/PennPed00001.png` is from the [Penn-Fudan database.](https://www.cis.upenn.edu/~jshi/ped_html/)
 
