@@ -25,7 +25,7 @@ def extract_frames(vidpath, framespath):
 if __name__ == "__main__":
     """
     Primjer koristenja:
-       $ python3 main.py --vidpath dataset/runaway_1.mp4 --framespath frames/
+       $ python3 main.py --vidpath video.mp4 --framespath frames/
     """
     a = argparse.ArgumentParser()
     a.add_argument("--vidpath", help="Path to the video.")
