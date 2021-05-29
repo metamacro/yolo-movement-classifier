@@ -4,7 +4,7 @@ The goal of this project would be movement classification of people, in other wo
 
 Yolov3/4 will be used for detection.
 
-## Yolov3 detection
+# Yolov3 detection
 
 ## Yolo: Real-Time object detection
 [Yolo description source.](https://pjreddie.com/darknet/yolo/)
