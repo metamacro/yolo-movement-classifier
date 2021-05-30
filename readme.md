@@ -22,7 +22,7 @@ $ deactivate # when done
 For ease of use, the [`yolov4`](https://pypi.org/project/yolov4/) Python module was used, which is a YOLOv4 implementation in TensorFlow 2. 
 For further documentation refer to the [project wiki](https://wiki.loliot.net/docs/lang/python/libraries/yolov4/python-yolov4-about/)
 
-To install `yolov4` install:
+To install `yolov4`:
 
 Dependencies:
 ```bash
@@ -36,16 +36,16 @@ TensorFlow YOLOv4:
 $ python3 -m pip install yolov4
 ```
 
-Download the `yolov4-tiny` and `yolov4` weights` from the project wiki [weights download section](https://wiki.loliot.net/docs/lang/python/libraries/yolov4/python-yolov4-about/#download-weights).
+Download the `yolov4-tiny` and `yolov4` weights to the `weights/` directory from the project wiki [weights download section](https://wiki.loliot.net/docs/lang/python/libraries/yolov4/python-yolov4-about/#download-weights).
 
 
-Test tensorflow-yolov4 with the provided default test image, change model config, weights based on the one used (default is yolov4-tiny).
+Test `yolov4` with the provided default test image, change model config, weights based on the one used (default is `yolov4-tiny`).
 ```bash
 $ python3 test.py
 ```
 
 ## Test results
-KACAVIS runaway_walk_1.mp4 frame 1471 was used:
+KACAVIS runaway\_walk\_1.mp4 frame 1471 was used:
 YOLOv4             |  YOLOv4-tiny
 :-------------------------:|:-------------------------:
 ![Yolov4](assets/passaway_walk_1_frame1471_yolov4.png)  |  ![Yolov4-tiny](assets/passaway_walk_1_frame1471_yolov4-tiny.png)
@@ -57,7 +57,7 @@ YOLOv4             |  YOLOv4-tiny
 ```
 
 ## Dataset
-[FER's](https://www.fer.unizg.hr/?) dataset [KACAVIS](http://kacavis.zemris.fer.hr/).`
+[FER's](https://www.fer.unizg.hr/?) dataset: [KACAVIS](http://kacavis.zemris.fer.hr/).`
 
 Download the dataset:
 ```bash
