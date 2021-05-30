@@ -28,7 +28,7 @@ Dependencies:
 ```bash
 $ python3 -m pip install opencv-python tensorflow
 ```
-Note: If TensorFlow Lite needs to be used, refer to the (project wiki)[https://wiki.loliot.net/docs/lang/python/libraries/yolov4/python-yolov4-about/] for further instructions.
+Note: If TensorFlow Lite needs to be used, refer to the [project wiki](https://wiki.loliot.net/docs/lang/python/libraries/yolov4/python-yolov4-about/) for further instructions.
 
 
 TensorFlow YOLOv4:
