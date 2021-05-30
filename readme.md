@@ -19,10 +19,10 @@ $ source envname/bin/activate # activate it
 $ deactivate # when done
 ```
 
-For ease of use, the [yolov4](https://pypi.org/project/yolov4/) Python module was used, which is a YOLOv4 implementation in TensorFlow 2. 
+For ease of use, the [`yolov4`](https://pypi.org/project/yolov4/) Python module was used, which is a YOLOv4 implementation in TensorFlow 2. 
 For further documentation refer to the [project wiki](https://wiki.loliot.net/docs/lang/python/libraries/yolov4/python-yolov4-about/)
 
-To install tensorflow-yolov4 install:
+To install `yolov4` install:
 
 Dependencies:
 ```bash
