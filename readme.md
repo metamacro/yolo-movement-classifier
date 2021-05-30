@@ -19,7 +19,7 @@ $ source envname/bin/activate # activate it
 $ deactivate # when done
 ```
 
-For ease of use, the [tensorflow-yolov4](https://pypi.org/project/yolov4/) Python module was used, which is a YOLOv4 implementation in Tensorflow 2. 
+For ease of use, the [tensorflow-yolov4](https://pypi.org/project/yolov4/) Python module was used, which is a YOLOv4 implementation in TensorFlow 2. 
 For further documentation refer to the [project wiki](https://wiki.loliot.net/docs/lang/python/libraries/yolov4/python-yolov4-about/)
 
 To install tensorflow-yolov4 install:
@@ -28,65 +28,45 @@ Dependencies:
 ```bash
 $ python3 -m pip install opencv-python tensorflow
 ```
-Note: If tensorflow lite needs to be used, refer to the (project wiki)[https://wiki.loliot.net/docs/lang/python/libraries/yolov4/python-yolov4-about/].
+Note: If TensorFlow Lite needs to be used, refer to the (project wiki)[https://wiki.loliot.net/docs/lang/python/libraries/yolov4/python-yolov4-about/] for further instructions.
 
-For the CPU only version:
-```bash
-$ python3 -m pip install yolo34py
-```
 
-For the GPU version:
+TensorFlow
 ```bash
-$ python3 -m pip install yolo34py-gpu
+$ python3 -m pip install yolov4
 ```
 
-Download the base model files:
-```bash
-$ bash ./init/download_models.sh
-```
-If need be:
-```bash
-$ chmod u+x ./init/download_models.sh
-```
+Download the `yolov4-tiny` and `yolov4` weights` from the project wiki [weights download section](https://wiki.loliot.net/docs/lang/python/libraries/yolov4/python-yolov4-about/#download-weights).
 
-## Test yolov34py
-```bash
-$ python3 test_yolov34py.py
-```
 
-## Using yolov3-tiny
-Download the yolov3-tiny model files:
+## Test tensorflow-yolov4 with the provided default test image, change model config, weights based on the one used (default is yolov4-tiny).
 ```bash
-$ wget -O weights/yolov3-tiny.weights https://pjreddie.com/media/files/yolov3-tiny.weights
-$ wget -O cfg/yolov3-tiny.cfg https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/yolov3-tiny.cfg
+$ python3 test.py
 ```
-Change `Detector(...)` parameters in `test_yolo34.py` to `yolov3-tiny.cfg` and `yolov3-tiny.weights`
 
 ## Test results
-Yolov3             |  Yolov3-tiny
+KACAVIS runaway_walk_1.mp4 frame1471:
+YOLOv4             |  YOLOv4-tiny
+:-----------------------------------------------------:
+![Test image](test.jpg)
 :-------------------------:|:-------------------------:
-![Yolov3 test image](assets/yolov3_test.png)  |  ![Yolov3-tiny test image](assets/yolov3-tiny_test.png)
+![Yolov4](assets/passaway_walk_1_frame1471_yolov4.png)  |  ![Yolov4-tiny](assets/passaway_walk_1_frame1471_yolov4-tiny.png)
 
-## Scripts
-- test\_yolo34py.py - used for testing the yolo34py module, with the yolov3 and yolov3-tiny models
-- extract_frames.py - used for video frames extraction 
 
-## Datasets
-The test image `dataset/PennPed00001.png` is from the [Penn-Fudan database.](https://www.cis.upenn.edu/~jshi/ped_html/)
+## Dataset
+[FER's](https://www.fer.unizg.hr/?) dataset [KACAVIS](http://kacavis.zemris.fer.hr/).`
+
+Download the dataset:
+```bash
+wget -O dataset/crowd_simulation_dataset.zip  http://kacavis.zemris.fer.hr/datasets/Crowd_simulation_dataset_videos.zip
+```
 
 ## Pip freeze
-Example of working module versions. `$ python3 -m pip freeze`:
+To get the used module versions, in other words `$ python3 -m pip freeze`, take a look at:
 ```bash
-certifi==2020.12.5
-chardet==4.0.0
-Cython==0.29.23
-idna==2.10
-numpy==1.20.3
-opencv-python==4.5.2.52
-requests==2.25.1
-urllib3==1.26.5
-yolo34py==0.2
+./pip_freeze.txt
 ```
-Tested on `Archlinux 5.12.7-arch1-1`, python version `Python 3.9.5`
 
-If using on Arch change `python3` to `python` in instructions.
+Tested on `Archlinux 5.12.x-arch1-1`, python version `Python 3.9.5`
+
+If working on Arch change `python3` to `python` everywhere.
