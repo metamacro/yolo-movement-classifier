@@ -19,7 +19,7 @@ $ source envname/bin/activate # activate it
 $ deactivate # when done
 ```
 
-For ease of use, the [tensorflow-yolov4](https://pypi.org/project/yolov4/) Python module was used, which is a YOLOv4 implementation in TensorFlow 2. 
+For ease of use, the [yolov4](https://pypi.org/project/yolov4/) Python module was used, which is a YOLOv4 implementation in TensorFlow 2. 
 For further documentation refer to the [project wiki](https://wiki.loliot.net/docs/lang/python/libraries/yolov4/python-yolov4-about/)
 
 To install tensorflow-yolov4 install:
@@ -50,6 +50,11 @@ YOLOv4             |  YOLOv4-tiny
 :-------------------------:|:-------------------------:
 ![Yolov4](assets/passaway_walk_1_frame1471_yolov4.png)  |  ![Yolov4-tiny](assets/passaway_walk_1_frame1471_yolov4-tiny.png)
 
+## Help
+```python
+>>> from yolov4.tf import YOLOv4
+>>> help(YOLOv4)
+```
 
 ## Dataset
 [FER's](https://www.fer.unizg.hr/?) dataset [KACAVIS](http://kacavis.zemris.fer.hr/).`
