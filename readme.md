@@ -12,7 +12,7 @@ You only look once (YOLO) is a state-of-the-art, real-time object detection syst
 Currently the most advanced YOLO version is YOLOv4 which provides optimal speed and accuracy for object detection, therefore it will be used.
 
 ## Modules
-Before starting, usage of a virtual environment is advised via the venv module:
+Before starting, usage of a virtual environment is advised via the `venv` module:
 ```bash
 $ python3 -m venv envname # to create the virtual env
 $ source envname/bin/activate # activate it
@@ -39,7 +39,7 @@ $ python3 -m pip install yolov4
 Download the `yolov4-tiny` and `yolov4` weights to the `weights/` directory from the project wiki [weights download section](https://wiki.loliot.net/docs/lang/python/libraries/yolov4/python-yolov4-about/#download-weights).
 
 
-Test `yolov4` with the provided default test image, change model config, weights based on the one used (default is `yolov4-tiny`).
+Test `yolov4` with the provided default test image. Change model config, weights based on the one used (default is `yolov4-tiny`).
 ```bash
 $ python3 test.py
 ```
