@@ -31,7 +31,7 @@ $ python3 -m pip install opencv-python tensorflow
 Note: If TensorFlow Lite needs to be used, refer to the (project wiki)[https://wiki.loliot.net/docs/lang/python/libraries/yolov4/python-yolov4-about/] for further instructions.
 
 
-TensorFlow
+TensorFlow YOLOv4:
 ```bash
 $ python3 -m pip install yolov4
 ```
@@ -39,16 +39,14 @@ $ python3 -m pip install yolov4
 Download the `yolov4-tiny` and `yolov4` weights` from the project wiki [weights download section](https://wiki.loliot.net/docs/lang/python/libraries/yolov4/python-yolov4-about/#download-weights).
 
 
-## Test tensorflow-yolov4 with the provided default test image, change model config, weights based on the one used (default is yolov4-tiny).
+Test tensorflow-yolov4 with the provided default test image, change model config, weights based on the one used (default is yolov4-tiny).
 ```bash
 $ python3 test.py
 ```
 
 ## Test results
-KACAVIS runaway_walk_1.mp4 frame1471:
+KACAVIS runaway_walk_1.mp4 frame 1471 was used:
 YOLOv4             |  YOLOv4-tiny
-:-----------------------------------------------------:
-![Test image](test.jpg)
 :-------------------------:|:-------------------------:
 ![Yolov4](assets/passaway_walk_1_frame1471_yolov4.png)  |  ![Yolov4-tiny](assets/passaway_walk_1_frame1471_yolov4-tiny.png)
 
