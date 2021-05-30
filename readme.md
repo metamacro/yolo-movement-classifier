@@ -2,20 +2,14 @@
 
 The goal of this project would be movement classification of people, in other words, walking (normal and fast) and running.
 
-Yolov3/4 will be used for detection.
+Yolov4 will be used for detection.
 
-# Yolov3 detection
+# Yolov4 detection
 
 ## Yolo: Real-Time object detection
-[Yolo description source.](https://pjreddie.com/darknet/yolo/)
-
 You only look once (YOLO) is a state-of-the-art, real-time object detection system. 
-On a Pascal Titan X it processes images at 30 FPS and has a mAP of 57.9% on COCO test-dev.
 
-
-YOLOv3 is extremely fast and accurate. In mAP measured at .5 IOU YOLOv3 is on par with Focal Loss but about 4x faster. 
-
-Moreover, you can easily tradeoff between speed and accuracy simply by changing the size of the model, no retraining required!
+Currently the most advanced YOLO version is YOLOv4 which provides optimal speed and accuracy for object detection, therefore it will be used.
 
 ## Modules
 Before starting, usage of a virtual environment is advised via the venv module:
@@ -25,12 +19,16 @@ $ source envname/bin/activate # activate it
 $ deactivate # when done
 ```
 
-For ease of use, the [yolo34py](https://pypi.org/project/yolo34py/) Python module was used, which is a wrapper on the YOLO 3.0 implementation by [pjreddie](https://pjreddie.com/).
+For ease of use, the [tensorflow-yolov4](https://pypi.org/project/yolov4/) Python module was used, which is a YOLOv4 implementation in Tensorflow 2. 
+For further documentation refer to the [project wiki](https://wiki.loliot.net/docs/lang/python/libraries/yolov4/python-yolov4-about/)
 
-To install yolo34py, first install:
+To install tensorflow-yolov4 install:
+
+Dependencies:
 ```bash
-$ python3 -m pip install requests cython numpy opencv-python
+$ python3 -m pip install opencv-python tensorflow
 ```
+Note: If tensorflow lite needs to be used, refer to the (project wiki)[https://wiki.loliot.net/docs/lang/python/libraries/yolov4/python-yolov4-about/].
 
 For the CPU only version:
 ```bash
