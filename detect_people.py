@@ -21,10 +21,11 @@ yolo.summary()
 # get raw images
 imgs = [yolo.resize_image(cv2.imread(img)) 
         for img in sorted(glob.glob("frames/*.jpg"))]
+
 LEN_TOTAL_FRAMES = len(str(len(imgs)))
+PERSON_ID = 0
 
 for nframe, img in enumerate(imgs):
-    PERSON_ID = 0
     # all dimension parameters are scaled [0, 1] relative to the image size
     idx = {name: i for i, name in enumerate(('x', 'y', 'w', 'h', 't', 'p'))}
     # detect, filter only people
