@@ -90,7 +90,7 @@ mot_tracker = Sort()
 # update SORT
 track_bbs_ids = mot_tracker.update(detections)
 
-# track\_bbs\_ids is a np array where each row contains a valid bounding box and track_id (last column)
+# track_bbs_ids is a np array where each row contains a valid bounding box and track_id (last column)
 ...
 ## Dataset
 [FER's](https://www.fer.unizg.hr/?) dataset: [KACAVIS](http://kacavis.zemris.fer.hr/).`
