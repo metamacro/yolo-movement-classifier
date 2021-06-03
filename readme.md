@@ -56,6 +56,42 @@ YOLOv4             |  YOLOv4-tiny
 >>> help(YOLOv4)
 ```
 
+# SORT tracking
+SORT is a barebones implementation of a visual multiple object tracking framework based on rudimentary data association and state estimation techniques. It is designed for online tracking applications where only past and current frames are available and the method produces object identities on the fly. 
+
+While this minimalistic tracker doesn't handle occlusion or re-entering objects its purpose is to serve as a baseline and testbed for the development of future trackers.
+
+## Modules
+To install `SORT`:
+
+Dependencies:
+```bash
+$ python3 -m pip install filterpy scikit-image lap
+```
+
+SORT:
+
+```bash
+mkdir tracking
+cd tracking
+$ git clone https://github.com/abewley/sort
+```
+
+## Bare bones usage
+```python
+from tracking.sort import *
+
+#create instance of SORT
+mot_tracker = Sort() 
+
+# get detections
+...
+
+# update SORT
+track_bbs_ids = mot_tracker.update(detections)
+
+# track\_bbs\_ids is a np array where each row contains a valid bounding box and track_id (last column)
+...
 ## Dataset
 [FER's](https://www.fer.unizg.hr/?) dataset: [KACAVIS](http://kacavis.zemris.fer.hr/).`
 
@@ -64,7 +100,7 @@ Download the dataset:
 wget -O dataset/crowd_simulation_dataset.zip  http://kacavis.zemris.fer.hr/datasets/Crowd_simulation_dataset_videos.zip
 ```
 
-## Pip freeze
+# Pip freeze
 To get the used module versions, in other words `$ python3 -m pip freeze`, take a look at:
 ```bash
 ./pip_freeze.txt
