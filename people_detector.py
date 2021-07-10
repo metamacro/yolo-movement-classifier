@@ -8,9 +8,9 @@ from tracking.sort import *
 
 class PeopleTracker:
     def __init__(self, coco="coco.names", 
-                 config="config/yolov4-tiny.cfg", 
-                 weights="weights/yolov4-tiny.weights",
-                 prob_thresh=0.3,
+                 config="config/yolov4.cfg", 
+                 weights="weights/yolov4.weights",
+                 prob_thresh=0.15,
                  color=(224, 143, 83)): # BGR
 
         self.yolo = YOLOv4()
@@ -116,7 +116,7 @@ class PeopleTracker:
             self.draw_text(img, f"Osoba {int(person[-1])}", topl)
             npeople += 1
 
-        #self.draw_text(img, f"Broj osoba: {npeople}", (0, np.shape(img)[1]), scale=0.8)
+        self.draw_text(img, f"Broj osoba: {npeople}", (0, np.shape(img)[1]), scale=0.8)
 
         return img
 
@@ -124,15 +124,15 @@ class PeopleTracker:
         # predict people bounding boxes with YOLOv4
         people = self.predict(image)
 
-        # update the new bounding boxes with SORT
-        print(people)
         if len(people):
+            # update the new bounding boxes with SORT
             tracked = self.tracker.update(np.array(people))
+            print(tracked)
 
             # draw the text + bounding boxes
             drawn = self.draw(image, tracked)
 
-            return drawn, tracked
+            return drawn, people
         else:
             return self.yolo.resize_image(image), None
 
