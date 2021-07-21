@@ -5,6 +5,8 @@ import cv2
 
 from yolov4.tf import YOLOv4
 from tracking.sort import *
+import math
+
 
 class PeopleTracker:
     def __init__(self, coco="coco.names", 
@@ -137,6 +139,20 @@ class PeopleTracker:
             return self.yolo.resize_image(image), None
 
 
+def area_calculation(present):
+    x1, y1, x3, y3 = present
+    x2, y2, x4, y4 = x1, y3, x3, y1
+    a = x1 * y2 - y1 * x2
+    b = x2 * y3 - y2 * x3
+    c = x3 * y4 - y3 * x4
+    d = x4 * y1 - y4 * x1
+    return math.sqrt(abs((a + b + c + d) / 2))
+
+
+def dist_calculation(present, past):
+    return math.sqrt((present[0] - past[0]) ** 2 + (present[1] - past[1]) ** 2)
+
+
 def classification(current, previous):
     count = 0
     if previous is not None and current is not None:
@@ -145,7 +161,11 @@ def classification(current, previous):
                 if present[4] == past[4]:
                     count += 1
                     #  TODO racunanje tu, prve 2 brojke su gornja tocka, druge 2 su donja tocka, 4. je ID
-    print(len(previous), len(current), count)
+                    dist = dist_calculation(present[:4], past[:4])
+                    area = area_calculation(present[:4])
+                    print(dist / area)
+        print(len(previous), len(current), count)
+    print("One of two most recent frames is None")
 
 
 if __name__ == "__main__":
@@ -161,9 +181,9 @@ if __name__ == "__main__":
         if nframe > 0:
             classification(people, previous)
         previous = people
-        cv2.imshow("Tracked", tracked)
+        #cv2.imshow("Tracked", tracked)
         #cv2.waitKey(0)
-        cv2.destroyAllWindows()
+        #cv2.destroyAllWindows()
 
         cv2.imwrite(os.path.join("out", f"frame{nframe:0{LEN_TOTAL_FRAMES}}.jpg"), tracked)
 
