@@ -8,7 +8,7 @@ from tracking.sort import *
 
 class PeopleTracker:
     def __init__(self, coco="coco.names", 
-                 config="config/yolov4-tiny.cfg", 
+                 config="config/yolov4-tiny.cfg",
                  weights="weights/yolov4-tiny.weights",
                  prob_thresh=0.3,
                  color=(224, 143, 83)): # BGR
@@ -125,7 +125,7 @@ class PeopleTracker:
         people = self.predict(image)
 
         # update the new bounding boxes with SORT
-        print(people)
+        #print(people)
         if len(people):
             tracked = self.tracker.update(np.array(people))
 
@@ -136,6 +136,16 @@ class PeopleTracker:
         else:
             return self.yolo.resize_image(image), None
 
+
+def classification(current, previous):
+    count = 0
+    if previous is not None and current is not None:
+        for present in current:
+            for past in previous:
+                if present[4] == past[4]:
+                    count += 1
+                    #  TODO racunanje tu, prve 2 brojke su gornja tocka, druge 2 su donja tocka, 4. je ID
+    print(len(previous), len(current), count)
 
 
 if __name__ == "__main__":
@@ -148,6 +158,12 @@ if __name__ == "__main__":
     LEN_TOTAL_FRAMES = len(str(len(imgs)))
     for nframe, img in enumerate(imgs):
         tracked, people = pplt.update(img)
+        if nframe > 0:
+            classification(people, previous)
+        previous = people
+        cv2.imshow("Tracked", tracked)
+        #cv2.waitKey(0)
+        cv2.destroyAllWindows()
 
         cv2.imwrite(os.path.join("out", f"frame{nframe:0{LEN_TOTAL_FRAMES}}.jpg"), tracked)
 
