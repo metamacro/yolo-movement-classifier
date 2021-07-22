@@ -118,7 +118,7 @@ class PeopleTracker:
             self.draw_text(img, f"Osoba {int(person[-1])}", topl)
             npeople += 1
 
-        #self.draw_text(img, f"Broj osoba: {npeople}", (0, np.shape(img)[1]), scale=0.8)
+        self.draw_text(img, f"Broj osoba: {npeople}", (0, np.shape(img)[1]), scale=0.8)
 
         return img
 
@@ -129,12 +129,14 @@ class PeopleTracker:
         # update the new bounding boxes with SORT
         #print(people)
         if len(people):
+            # update the new bounding boxes with SORT
             tracked = self.tracker.update(np.array(people))
+            #print(tracked)
 
             # draw the text + bounding boxes
             drawn = self.draw(image, tracked)
 
-            return drawn, tracked
+            return drawn, people
         else:
             return self.yolo.resize_image(image), None
 
