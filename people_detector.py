@@ -153,19 +153,39 @@ def dist_calculation(present, past):
     return math.sqrt((present[0] - past[0]) ** 2 + (present[1] - past[1]) ** 2)
 
 
-def classification(current, previous):
+def paint(img, topl, botr, color, thickness):
+    return cv2.rectangle(img,
+                        topl,
+                        botr,
+                        color,
+                        thickness)
+
+def classification(current, previous, tracked, walking=0.06, running=0.07):
     count = 0
     if previous is not None and current is not None:
         for present in current:
             for past in previous:
                 if present[4] == past[4]:
                     count += 1
-                    #  TODO racunanje tu, prve 2 brojke su gornja tocka, druge 2 su donja tocka, 4. je ID
-                    dist = dist_calculation(present[:4], past[:4])
-                    area = area_calculation(present[:4])
-                    print(dist / area)
-        print(len(previous), len(current), count)
-    print("One of two most recent frames is None")
+                    dist = (dist_calculation(present[:2], past[:2]) + dist_calculation(present[2:4], past[2:4])) / 2
+                    area = (area_calculation(present[:4]) + area_calculation(past[:4])) / 2
+                    print(dist, area)
+                    speed = dist / area
+                    topl = tuple(map(int, present[:2]))
+                    botr = tuple(map(int, present[2:4]))
+
+                    if speed < walking:
+                        tracked = paint(tracked, topl, botr, (255, 0, 0), 2)
+                    elif speed < running:
+                        tracked = paint(tracked, topl, botr, (0, 255, 0), 2)
+                    else:
+                        tracked = paint(tracked, topl, botr, (0, 0, 255), 2)
+                    #print(dist / area)
+                    break
+        #print(len(previous), len(current), count)
+    else:
+        print("One of two most recent frames is None")
+    return tracked
 
 
 if __name__ == "__main__":
@@ -177,9 +197,10 @@ if __name__ == "__main__":
 
     LEN_TOTAL_FRAMES = len(str(len(imgs)))
     for nframe, img in enumerate(imgs):
+        print("Frame: ", nframe)
         tracked, people = pplt.update(img)
         if nframe > 0:
-            classification(people, previous)
+            tracked = classification(people, previous, tracked)
         previous = people
         #cv2.imshow("Tracked", tracked)
         #cv2.waitKey(0)
